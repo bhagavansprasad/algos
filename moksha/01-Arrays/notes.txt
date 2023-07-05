@@ -1,0 +1,7 @@
+Sorting
+	Selection
+	Bubble
+	Insertion
+Searching
+	Linear
+	Binary
