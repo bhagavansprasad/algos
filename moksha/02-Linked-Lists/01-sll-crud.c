@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-  struct student
+struct student
 {
 	int no;
 	struct student *pnext;
@@ -26,23 +26,26 @@ int update_node(int x)
 {
 	struct student *t = NULL;
 	int a = 15;
-    for(t = H; t != NULL; t = t->pnext)
-    {
+	for(t = H; t != NULL; t = t->pnext)
+	{
 		if(t->no == x)
+		{
 			t->no = a;
-		break;
-    }
-		printf("%d\n", t->no);
+			break;
+		}
+	}
+	printf("%d\n", t->no);
 }
 
 int dump_list(void)
 {
-    struct student *t = NULL;    
-    for(t = H; t != NULL; t = t->pnext)
-    {
-        printf("%d\n", t->no);
-    }
+	struct student *t = NULL;    
+	for(t = H; t != NULL; t = t->pnext)
+	{
+		printf("%d\n", t->no);
+	}
 }
+
 int main()
 {
 	add_node(10);
