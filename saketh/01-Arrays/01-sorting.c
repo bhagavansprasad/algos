@@ -63,5 +63,4 @@ int main()
 
 	printf("After sorting...\n");
 	dump_array(a, len);
-
 }
