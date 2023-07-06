@@ -5,17 +5,19 @@ struct student
 	int x;
 	struct student * next;
 };
-struct student *h;
+
+struct student *H;
+
 int create(int v)
 {
 	struct student *t, *p;
-	t = h;
+	t = H;
 	p = malloc(sizeof(struct student));
 	p->x = v;
 	p->next = NULL;
-	if(h==NULL)
+	if(H==NULL)
 	{
-		h=p;
+		H=p;
 		return 0;
 	}
 	while(t->next!=NULL)
@@ -27,14 +29,14 @@ int create(int v)
 
 int update_by_pos(int v, int i)
 {
-	struct student *t=h;
+	struct student *t=H;
 	int u=0;
-		while(u<i && t->next!=NULL)
-		{
-			t = t->next;
-             u++;
-		}
-		//printf("%d\n", u);
+	while(u < i && t->next!=NULL)
+	{
+		t = t->next;
+		u++;
+	}
+	//printf("%d\n", u);
 	if(u == i)
 	{
 		t->x = v;
@@ -45,7 +47,9 @@ int update_by_pos(int v, int i)
 }
 int update_by_val(int v, int s)
 {
-	struct student *t = h;
+	struct student *t = H;
+	
+	//TODO:What about 'v' is the last node in the list?
 	while(t->x != s && t->next!=NULL)
 	{
 		t = t->next;
@@ -61,66 +65,68 @@ int update_by_val(int v, int s)
 
 int del_by_pos(int i)
 {
-	struct student *t = h;
+	struct student *t = H;
 	int z = 0;
+	
+	//TODO:What about 'v' is the last node in the list?
 	while(z!=i-1 && t->next!=NULL)
 	{
 		t = t->next;
 		z++;
 	}
-    if(t->next == NULL)
+	if(t->next == NULL)
 	{
-	printf("the position is not available\n");
-	return -1;
-    }
+		printf("the position is not available\n");
+		return -1;
+	}
 
-    else if(i == 0)
+	else if(i == 0)
 	{
-		struct student *c = h;
-		h = h->next;
+		struct student *c = H;
+		H = H->next;
 		free(c);
 	}
-	
+
 	else if(t->next->next == NULL)
 	{
 		t->next=NULL;
 		return 0;
 	}
 
-    	else if(z == i)
+	else if(z == i)
 	{
 		struct student *c = t->next;
 		t->next = t->next->next;
 		free(c);
 		return 0;
 	}
-  
+
 	else if(t->next == NULL)
 	{
-	printf("the position is not available\n");
-	return -1;
-    }
-	
- }
+		printf("the position is not available\n");
+		return -1;
+	}
+
+}
 int del_by_val(int v)
 {
-	struct student *t = h;
+	struct student *t = H;
 	if(t->x == v)
 	{
 		struct student *c = t->next;
-		h = t->next;
+		H = t->next;
 		free(c);
 		return 0;
 	}
 	while(t->next->x!=v && t->next->next!=NULL)
 	{
-		 if(t->next->x == v){
-			 struct student *c = t->next;
-			 t->next = t->next->next;
-			 free(c);
-			 return 0;
-		 }
-		 t = t->next;
+		if(t->next->x == v){
+			struct student *c = t->next;
+			t->next = t->next->next;
+			free(c);
+			return 0;
+		}
+		t = t->next;
 	}
 
 	if(t->next->next == NULL && t->next->x == v)
@@ -133,7 +139,7 @@ int del_by_val(int v)
 }
 void dumplist()
 {
-	struct student *t = h;
+	struct student *t = H;
 	while(t->next != NULL)
 	{
 		printf("%d\n", t->x);
@@ -162,10 +168,4 @@ int main()
 	dumplist();
 	return 0;
 }
-
-
-
-
-
-
 

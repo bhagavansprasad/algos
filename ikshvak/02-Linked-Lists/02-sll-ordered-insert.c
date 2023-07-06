@@ -20,7 +20,7 @@ int add_node(int v)
 	}
 	while(t->next!=NULL)
 	{	
-        if(t->next->x >= v)
+		if(t->next->x >= v)
 		{
 			p->next = t->next;
 			t->next = p;
@@ -30,7 +30,7 @@ int add_node(int v)
 
 		else if(t->next->x < v && t->next!=NULL)
 		{
-          t = t-> next;
+			t = t-> next;
 		}
 	}
 	t->next = p;
@@ -38,28 +38,28 @@ int add_node(int v)
 }
 
 
-	void dump_list()
+void dump_list()
+{
+	struct student *t = h;
+	while(t->next != NULL)
 	{
-		struct student *t = h;
-		while(t->next != NULL)
-		{
-			printf("%d\n", t->x);
-				t = t->next;
-		}
+		printf("%d\n", t->x);
+		t = t->next;
 	}
+}
 
 int main()
 {
- add_node(10);
- add_node(12);
- add_node(9);
- add_node(3);
- add_node(5);
- add_node(45);
- add_node(62);
- add_node(73);
- dump_list();
- return 0;
+	add_node(10);
+	add_node(12);
+	add_node(9);
+	add_node(3);
+	add_node(5);
+	add_node(45);
+	add_node(62);
+	add_node(73);
+	dump_list();
+	return 0;
 }
 
 

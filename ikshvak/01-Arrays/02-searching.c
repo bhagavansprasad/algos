@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int linear_ser(int* p, int v, int s)
+int linear_serch(int* p, int v, int s)
 {
 	int i;
 	for(i=0; i<s; i++)
@@ -13,7 +13,7 @@ int linear_ser(int* p, int v, int s)
 	return -1;
 }
 
-int bin_ser(int* arr, int l, int h, int v)
+int bin_search(int* arr, int l, int h, int v)
 {
 	int mid;
 	while(h!=l)
@@ -29,7 +29,6 @@ int bin_ser(int* arr, int l, int h, int v)
 		{
 			l = mid+1;
 		}
-
     }
 }
 
@@ -40,11 +39,8 @@ int main()
 	int l, h;
 	l = 0; 
 	h = sizeof(arr)/sizeof(arr[0]);
-	//int v = linear_ser(arr, 1, h);
-	int b = bin_ser(arr, l, h, 9);
+	//int v = linear_serch(arr, 1, h);
+	int b = bin_search(arr, l, h, 9);
 	printf("%d\n", b);
 }
-
-
-
 
