@@ -32,11 +32,11 @@ int binary_search(int* p,int l, int h, int n)
 
 int main()
 {
-	int a[] = {2, 4, 1, 6, 5 };
+	int a[] = {1, 4, 5, 7, 8 };
 	int len, l=0, h = len ;
 	len = sizeof(a)/sizeof(a[0]);
 	//int v = linear_search(a, len, 5); 
-	int y = binary_search(a, 0, len, 5);
+	int y = binary_search(a, 0, len, 1);
 	//printf("%d\n",v);
 	printf("%d\n",y);
 	return 0;

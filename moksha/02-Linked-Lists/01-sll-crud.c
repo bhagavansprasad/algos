@@ -45,7 +45,6 @@ int update_node_by_value(int x, int a)
 	{
 		printf("%d\n", t->no);
 	}
-
 	return 0;
 }
 int del_node_by_value(int n) 
