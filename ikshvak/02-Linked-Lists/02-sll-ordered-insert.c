@@ -27,11 +27,8 @@ int add_node(int v)
 			return 0;
 			printf("%d\n", t->x);
 		}
+		t=t->next;
 
-		else if(t->next->x < v && t->next!=NULL)
-		{
-			t = t-> next;
-		}
 	}
 	t->next = p;
 	return 0;
