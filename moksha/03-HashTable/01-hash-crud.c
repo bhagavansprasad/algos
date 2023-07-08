@@ -1,17 +1,22 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-struct node 
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct node
 {
 	char name[100];
-	struct node* next;
+	struct node *next;
 };
-struct node* h[100] = {NULL};
 
-int get_key(char* p) 
+struct node *h[26] = {NULL};
+
+int get_key(char *p)
 {
-	int key = p[0] - 65;
-	return key;
+	int hkey = 0;
+
+	hkey = p[0]-65;
+
+	return hkey;
 }
 int add_node(char* c) 
 {
@@ -86,34 +91,57 @@ int update_node(char* x, char* a)
 		return 0;
 	}
 }
-	void dump_list() 
+
+void dump_list()
+{
+	int size, i;
+	struct node *t;
+	size = sizeof(h)/sizeof(h[0]);
+	for(i=0; i < size; i++)
 	{
-		int length, i;
-		struct node* t = NULL;
-		length = sizeof(h) / sizeof(h[0]);
-		for (i = 0; i < length; i++) 
+		printf("%4d:%3c: ", i, 'A'+i);
+		t = h[i];
+		while( t != NULL)
 		{
-			for (t = h[i]; t != NULL; t = t->next) 
-			{
-				printf("%s\n", t->name);
-			}
+			printf("%-15s", t->name);
+			t = t->next;
 		}
+		printf("\n");
 	}
-	int main() 
+}
+char names[][100] = {
+	"Saketh", 
+	"Ikshwak", 
+	"Yoga", 
+	"Samhitha",
+	"Ilindar", 
+	"Moksha",
+	"Yagna",
+	"Affifa",
+	"Ammu",
+	"Yagna",
+	"Ammu",
+	"Amrutha"
+};
+
+int main()
+{
+	int dlen = sizeof(names)/sizeof(names[0]);
+	int i = 0;
+	printf("dlen :%d\n", dlen);
+	for (i = 0; i < dlen; i++)
 	{
-		char name[100] = "Moksha";
-		add_node(name);
-		char p[100] = "Yagna";
-		add_node(p);
-		char s[100] = "Affifa";
-		add_node(s);
-		char u[100] = "Ammu";
-		add_node(u);
-		char v[100] = "Yagna";
-		delete_node(v);
-		char w[100] = "Ammu";
-		char b[100] = "Amrutha";
-		update_node(w, b); 
-		dump_list();
-		return 0;
+		add_node(names[i]);
+		//if(i >= 4)
+		if(0)
+		{
+			break;
+		}
+		//dump_list();
+		//del_node(names[3]);
 	}
+	delete_node(names[3]);
+	dump_list();
+	return 0;
+}
+
