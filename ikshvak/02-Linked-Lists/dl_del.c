@@ -31,6 +31,14 @@ int add_node(int v)
 int del_node(int v)
 {
 	struct node *t = h;
+	if(h->x == v)
+	{
+		t = h;
+		h = h->next;
+		free(t);
+		return 0;
+	}
+
 
 	while(t->x!=v&&t!=NULL)
 	{
@@ -72,14 +80,9 @@ int main()
 	printf("before deleting\n");
 	dumplist();
 	del_node(30);
-	del_node(54);
+	del_node(10);
 	printf("after deleting\n");
 	dumplist();
 	return 0;
 }
-
-
-
-
-
 

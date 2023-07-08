@@ -43,10 +43,11 @@ int update_node_by_value(int x, int a)
 
 	if (t != NULL) 
 	{
-		printf("%d\n", t->no);
+		//printf("%d\n", t->no);
 	}
 	return 0;
 }
+
 int del_node_by_value(int n) 
 {
 	struct student* p = NULL;
@@ -88,8 +89,9 @@ int dump_list(void)
 	struct student* t = NULL;
 	for (t = H; t != NULL; t = t->pnext) 
 	{
-		printf("%d\n", t->no);
+		printf("%4d", t->no);
 	}
+	printf("\n\n");
 
 	return 0;
 }
@@ -101,7 +103,9 @@ int main()
 	add_node(40);
 	dump_list();
 	update_node_by_value(10, 15);
+	dump_list();
 	del_node_by_value(30);
+	dump_list();
 
 	return 0;
 }
