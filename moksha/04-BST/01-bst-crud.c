@@ -52,11 +52,13 @@ int add_node(int v)
 
 void dump_list(void)
 {
-	int main()
-	{
-		add_node(8);
-		add_node(6);
-		add_node(9);
-		return 0;
-	}
 }
+
+int main()
+{
+	add_node(8);
+	add_node(6);
+	add_node(9);
+	return 0;
+}
+
