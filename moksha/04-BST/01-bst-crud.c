@@ -108,49 +108,79 @@ int add_node(int v)
 	return 0;
 }
 
+void in_order_traversal(struct node* root)
+{
+	struct node* current = root;
+	struct node *temp = NULL;
+	while(1)
+	{
+		while(current != NULL)
+		{
+			push(current);
+			current = current->l;
+		}
+		if(current == NULL && is_stack_empty() == 0)
+		{
+			temp = pop();
+			printf("%3d",temp->value);
+			current = temp->r;
+		}
+
+		if(current == NULL && is_stack_empty() == 1)
+		{
+			break;
+		}
+	}
+	printf("\n");
+}
+void pre_order_traversal(struct node* root)
+{
+	struct node *temp = NULL;
+	push(root);
+	while(1)
+	{
+		while(is_stack_empty() == 0)
+		{
+			 temp = pop();
+			 printf("%3d",temp->value);
+			 if(temp->r != NULL)
+			 push(temp->r);
+			 if(temp->l != NULL)
+			 push(temp->l);
+			 
+		}
+		if(is_stack_empty() == 1)
+		{
+			break;
+		}
+	}
+	printf("\n");
+}
+
 void dump_list(void)
 {
+	pre_order_traversal(H);
+	in_order_traversal(H);
 }
+
+int test_data1[] = {8, 12, 10, 7, 32, 16, 14, 11, 4, 6, 1};
+int test_data2[] = {10, 12, 11, 8, 9, 5, 6};
 
 int main()
 {
-	//add_node(8);
-	//add_node(6);
-	//add_node(9);
-}
+	int i = 0;
 
-int test_stack()
-{
-#if 0
-	printf("is_stack_empty :%d\n", is_stack_empty());
-	printf("is_stack_full  :%d\n", is_stack_full());
-	push(10);
-	push(20);
-	push(30);
-	printf("stack_peek     :%d\n", stack_peek());
+	printf("In_order_traversal:\n");
+	printf("pre_order_traversal:\n");
 
-	push(40);
-	printf("stack_peek     :%d\n", stack_peek());
+  
+	for (i = 0; i < sizeof(test_data1)/sizeof(int); i++)
+	{
+		add_node(test_data1[i]);
+	}
 
-	push(50);
-	printf("stack_peek     :%d\n", stack_peek());
-
-	push(60);
-	printf("stack_peek     :%d\n", stack_peek());
-
-	printf("pop            :%d\n", pop());
-	printf("pop            :%d\n", pop());
-	printf("pop            :%d\n", pop());
-	printf("stack_peek     :%d\n", stack_peek());
-
-	printf("pop            :%d\n", pop());
-	printf("pop            :%d\n", pop());
-	printf("stack_peek     :%d\n", stack_peek());
-
-	printf("pop            :%d\n", pop());
-	printf("stack_peek     :%d\n", stack_peek());
-
+	dump_list();
 	return 0;
-#endif
+
 }
 
