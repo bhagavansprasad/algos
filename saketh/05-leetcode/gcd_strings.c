@@ -1,27 +1,46 @@
-#include <stdio.h>
+#include <stdbool.h>
 #include <string.h>
-int check_n_string(char* str, int gcd)
+#include <stdio.h>
+#include <stdlib.h>
+int check_n_string(const char* str, int gcd)
 {
-    int l = strlen(str),i;
-    if (gcd >= l)
-        return -1;
-    for (i = 0; i < l - gcd; i++)
+    int len = strlen(str);
+    int i = 0, retval = 0;
+    for (i = gcd; i < len; i = i + gcd)
     {
-        if (strncmp(str + i, str + i + gcd, gcd) != 0)
-		{
-			printf("\n not a sequence \n");
+        retval = strncmp(str, str + i, gcd);
+        if (retval != 0)
             return -1;
-    
-		}
-	}	
-
+    }
     return 1;
+}
+int gcd(int a, int b)
+{
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
+char* gcd_string(const char *a, const char *b)
+{
+    int lena = strlen(a);
+    int lenb = strlen(b);
+    int g = gcd(lena, lenb);
+    int t = check_n_string(a, g);
+    int k = check_n_string(b, g);
+    char *ss = malloc((g + 1) * sizeof(char));
+    if (k == 1 && t == 1)
+    {
+        strncpy(ss, a, g);
+        ss[g] = '\0';
+    }
+	*ss = '\0';  
+	return ss;
 }
 int main()
 {
-    char str[] = "abab";
-    int gcd = 2;
-    int result = check_n_string(str, gcd);
-    printf("\n Result: %d\n", result);
+    const char* str1 = "abcabcabca";
+    const char* str2 = "ab";
+    char* r = gcd_string(str1, str2);
+    printf("%s\n", r);
     return 0;
 }
