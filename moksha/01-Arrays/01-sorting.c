@@ -63,8 +63,8 @@ int main()
 
 	printf("Before sorting...\n");
 	dump_array(a, len);
-	selection_sort(a, len);
-	//bubble_sort(a, len);
+//	selection_sort(a, len);
+	bubble_sort(a, len);
 
 	printf("After sorting...\n");
 	dump_array(a, len);

@@ -7,14 +7,14 @@ struct node
 	struct node* r;
 };
 
-#define STACK_SIZE 5
+#define STACK_SIZE 15
 struct node *stack[STACK_SIZE] = {NULL};
 //int stack[STACK_SIZE] = {0};
 int top = 0;
 struct node *H = NULL;
 
 struct node *pop()
-//int pop()
+	//int pop()
 {
 	struct node *temp = NULL;
 	//int temp = 0;
@@ -29,7 +29,7 @@ struct node *pop()
 }
 
 int push(struct node *ptr)
-//int push(int n)
+	//int push(int n)
 {
 	struct node *temp = NULL;
 	if(top > STACK_SIZE-1)
@@ -141,13 +141,13 @@ void pre_order_traversal(struct node* root)
 	{
 		while(is_stack_empty() == 0)
 		{
-			 temp = pop();
-			 printf("%3d",temp->value);
-			 if(temp->r != NULL)
-			 push(temp->r);
-			 if(temp->l != NULL)
-			 push(temp->l);
-			 
+			temp = pop();
+			printf("%3d",temp->value);
+			if(temp->r != NULL)
+				push(temp->r);
+			if(temp->l != NULL)
+				push(temp->l);
+
 		}
 		if(is_stack_empty() == 1)
 		{
@@ -156,6 +156,8 @@ void pre_order_traversal(struct node* root)
 	}
 	printf("\n");
 }
+
+
 
 void dump_list(void)
 {
@@ -173,7 +175,7 @@ int main()
 	printf("In_order_traversal:\n");
 	printf("pre_order_traversal:\n");
 
-  
+
 	for (i = 0; i < sizeof(test_data1)/sizeof(int); i++)
 	{
 		add_node(test_data1[i]);
